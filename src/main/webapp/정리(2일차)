@@ -1,0 +1,23 @@
+로그인/로그아웃
+
+-패스워드 암호화/복호화-
+BCrypt객체를 통한 해시값 생성 -> DB저장
+BCrypt객체를 통한 로그인 계정 패스워드 일치 여부 확인 후 로그인 처리
+
+다운로드 경로 : 구글 ->maven bcrypt ->jar파일 다운로드 -> /WEB-INF/lib에 복사 
+
+-로그인-
+1 FC 에서 "/Login.do" , "LoginController"를 init 호출시 저장
+2 LoginController 
+  1 파라미터
+  2 입력값 확인
+  3 서비스 실행
+  MemberService -> dao.select(email)
+  4 패스워드 일치확인
+     - 세션객체에 grade 저장
+     - 세션객체에 email 저장
+  5 View로 이동
+     main.jsp 로 redirect
+
+
+- 로그아웃-

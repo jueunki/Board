@@ -1,0 +1,14 @@
+@게시물 보기 list
+@게시글 쓰기 post
+@게시글 읽기 read
+req -> Frontcontroller (URL선별) -> execute함수 실행 ->subcontroller : 1.parameter(정보뽑기) ->
+2.파라미터확인 -> 3.service실행(회원가입 게시물확인 업로드처리 등등) -> 
+dao 호출(DB연동의 결과확인/db와 연결(oracleDB)) -> subcontroller
+View로 이동(view에서 표시 보여지는 내용물) -> 
+
+
+
+
+
+게시글 수정 update
+게시글 삭제 delete

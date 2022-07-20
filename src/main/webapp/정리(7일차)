@@ -1,0 +1,66 @@
+
+1 처음으로 이동
+
+2 글쓰그 (파일 업로드 전)
+
+
+create sequence tbl_board_seq
+increment by 1 start with 501
+Maxvalue 9999
+nocycle
+nocache
+noorder;
+
+select * from tbl_board order by No desc;
+insert into tbl_board values(tbl_board_seq.NEXTVAL,'t','c','w',sysdate,'1234',0,'127.0.0.1',0,0);
+
+
+  
+
+--------------------------
+5 글쓰기
+--------------------------
+list.jsp에서 글쓰기 버튼을 클릭하면 /Board/post.do(flag 미포함) -> post form화면
+post  form화면에서 내용을 입력하고 글쓰기 버튼(falg포함)을 누른다.
+BoardPostController로 가서
+1)글 관련 파라미터 받기
+2)입력값을 검증받고
+3)서비스 실행하고 DAO로 이동 DB로!
+4)View로 이동!
+--------------------------
+5 글쓰기 (파일 업로드 포함) 
+--------------------------
+
+--------------------------
+6 글수정
+--------------------------
+
+--------------------------
+7 글삭제
+--------------------------
+
+--------------------------
+8 댓글달기(ajax)
+--------------------------
+
+--------------------------
+9 업로드/다운로드
+--------------------------
+
+--------------------------
+10 API 사용하기
+--------------------------
+
+
+
+
+
+create sequence tbl_board_seq
+increment by 1 start with 501
+Maxvalue 9999
+nocycle
+nocache
+noorder;
+
+select * from tbl_board order by No desc;
+insert into tbl_board values(tbl_board_seq.NEXTVAL,'t','c','w',sysdate,'1234',0,'127.0.0.1',0,0);

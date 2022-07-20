@@ -1,0 +1,80 @@
+--------------------------
+2 글쓰기(파일 업로드 전)
+--------------------------
+DB - Sequence 생성
+
+create sequence tbl_board_seq
+increment by 1 
+start with 501 
+Maxvalue 9999
+nocycle
+nocache
+noorder;
+
+select * from tbl_board order by no desc;
+insert into tbl_board values(tbl_board_seq.NEXTVAL,'t','c','w',sysdate,'1234',0,'127.0.0.1',0,0);
+--------------------------
+5 글쓰기(파일 업로드 미포함)
+--------------------------
+1 list.jsp 글쓰기 버튼 클릭 -> /Board/post.do (flag 미포함) ->post form 화면
+2 post form 화면에서 내용 입력 , 글쓰기 버튼(flag포함) -> 
+  BoardPostController
+  1) 글관련 파라미터 받기
+  2) 입력값검증
+  3) 서비스 실행 ->Dao ->DB
+  4) View로 이동
+  
+
+--------------------------
+5 글쓰기(파일 업로드 포함)
+--------------------------
+1 /WEB-INF/board/post.jsp 의
+enctype=multipart/form-data
+
+2 FrontController
+@MultipartConfig 추가
+
+3 BoardPostController
+req.getParts() -request로부터 part들 꺼내욤
+파일미포함 글쓰기 요청
+-service.PostBoard(dto);
+파일포함 글쓰기 요청 분기처리
+-service.PostBoard(dto,parts);
+
+4 BoardService
+service.PostBoard(dto,parts)
+1) 업로드
+- 업로드 폴더지정(멤버변수 c:\\upload/)
+- 하위폴더 지정(email/날짜정보)
+- 경로연결(File)
+- 하위폴더 만들기
+- files 파트만 확인해서 파일이름 추출
+- 파일이름+_UUID+확장자
+- 업로드 part.write(파일경로)
+
+2) dao처리
+-각 part의 파일명을 StringBuffer 에저장
+-각 part의 파일사이즈 StringBuffer 에 저장
+-dto Filename,Filesize를 저장
+-dao 전달
+--------------------------
+6 글수정
+--------------------------
+
+--------------------------
+7 글삭제
+--------------------------
+
+--------------------------
+8 댓글달기(ajax)
+--------------------------
+
+--------------------------
+9 업로드/다운로드
+--------------------------
+
+--------------------------
+10 API 사용하기
+--------------------------
+
+

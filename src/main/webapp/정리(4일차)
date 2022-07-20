@@ -1,0 +1,41 @@
+--------------------------
+1 필터 설정하기
+--------------------------
+1) web.xml 에 filter-url mapping
+	   <!-- Filter URL Mapping   -->
+	    <filter>
+			<filter-name>authority</filter-name>
+			<filter-class>com.korea.filter.authfilter</filter-class>    
+	    </filter>
+	    <filter-mapping>
+	 		<filter-name>authority</filter-name>   
+	    	<url-pattern>*.do</url-pattern>
+	    </filter-mapping>
+
+2) 패키지생성,클래스생성
+- com.korea.filter 패키지생성
+- com.korea.filter.authfilter 클래스 생성
+- authfilter implements Filter 
+- doFilter 를 재정의
+
+- 전(Filter -> Controller)
+- chain.doFilter(req,resp)
+- 후(Controller->Filter)
+
+
+
+--------------------------
+2 페이지별 권한 부여 
+--------------------------
+0) URL-Grade 저장하기
+-init() ->Map에 URL-Grade 저장
+0:익명 1:일반 2:관리자
+
+1) 세션 usergrade 가져오기
+2) URL pagegrade 가져기
+3) 권한 설정
+
+
+
+
+

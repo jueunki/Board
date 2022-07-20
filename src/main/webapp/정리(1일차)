@@ -1,0 +1,59 @@
+
+-----------------------------
+
+0 FrontController 모든 *.do 를 수신 web.xml 설정 완료(서버 재부팅)
+1 외부 URL 요청
+2 FrontController init() 초기화
+3 FrontController service() -> req url 가져오기 -> SubController를 map에서 꺼냄
+4 SubController
+  1) 파라미터 받기  
+  2) 입력값 검증(JS대체 가능)
+  3) 서비스 실행
+      service -> dao ->DB 처리 
+  4) View로 이동(포워드 / 리다이렉트)
+
+
+-----------------
+정리(1일차)---------
+1.필터 설정하기
+-----------------
+1)web.xml에 filter-url mapping
+<!-- Filter URL Mapping -->
+<!-- 	<filter>
+		<filter-name>authority</filter-name>
+		<filter-class>com.korea.filter.authfilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>authority</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping> -->
+
+2)패키지 생성, 클래스 생성
+- com.korea.filter 패키지 생성
+- com.korea.filter.auth 클래스 생성
+- authfilter implements Filter
+- doFilter를 재정의한다.
+-> 전 (Filter -> Controller)
+- chain.doFilter(req.resp)
+-> 후 (Controller->Filter)
+
+
+--------------------------
+페이지별 권한부여
+--------------------------
+0) URL-Grade 저장하기
+-init() -> Map에 URL-Grade저장
+0 : 익명 , 1 : 일반 , 2 : 관리자 로 지정설정을 해줬다.
+
+
+1) session usergrade 가져오기
+2) URL pagegrade 가져오기
+3) 권한 설정
+
+
+session에 grade를 넣기전에 controller를 거치기전에 필터를 만나게되는데,
+
+
+
+
+
